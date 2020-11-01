@@ -48,7 +48,7 @@
                         <?//=LIB::csrfInput();?>
                         <!-- <input type="hidden" name="csrf_token" value="<?php// echo generate_token();?>" /> -->
                         <input type="submit" name="addbtn" class="btn btn-primary" value="Submit">
-                        <a href="../php-mvc-oop/index.php" class="btn btn-default">Cancel</a>
+                        <a href="../app/index.php" class="btn btn-default">Cancel</a>
                     </form>
                 </div>
             </div>        

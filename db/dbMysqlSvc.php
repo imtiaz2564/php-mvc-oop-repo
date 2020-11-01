@@ -14,16 +14,29 @@ class MysqlDBSvc implements IDB {
     private $user;
     private $dbPass;
 
-    public function __construct($host , $user , $dbName, $dbPass) {
-        
-        $this->host = $host;
-        $this->user = $user;
-        $this->dbName = $dbName;
-        $this->dbPass = $dbPass;
+//    public function __construct($host , $user , $dbName, $dbPass) {
+//
+//        $this->host = $host;
+//        $this->user = $user;
+//        $this->dbName = $dbName;
+//        $this->dbPass = $dbPass;
+//
+//        //$this->open_db();
+//    }
+public function __construct($objConst) {
 
-        //$this->open_db();
-    }
-
+    $this->host = $objConst->host;
+    $this->user = $objConst->user;
+    $this->dbName = $objConst->db;
+    $this->dbPass = $objConst->pass;
+//echo $objConst->host;
+//echo $objConst->user;
+//echo $objConst->db;
+//echo $objConst->pass;
+//die();
+ //   $this->open_db();
+}
+//die();
     private function open_db() {
 
         // connection open
@@ -31,7 +44,7 @@ class MysqlDBSvc implements IDB {
         $this->conn = new \mysqli($this->host , $this->user , $this->dbPass , $this->dbName);
         if ($this->conn->connect_error) 
         {
-            die("Erron in connection: " . $this->conn->connect_error);
+            die("Error in connection: " . $this->conn->connect_error);
         }
     }
 

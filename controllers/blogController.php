@@ -1,6 +1,5 @@
 <?php
-
-namespace blogctrl;
+namespace blog;
 
 use Model\Blog;
 use blogrepository\IBlog;
@@ -15,16 +14,18 @@ class BlogController
     {
         $this->blogRepo = $blogRepo;
     }
+    public function insertView()
+    {
+        include "view/insert.php";
+    }
     public function insertData()
     {   
        $blog = new Blog(htmlspecialchars($_POST['name']) ,htmlspecialchars($_POST['category']) , '');
        $res = $this->blogRepo->insertData($blog);
-       $this->list();
-       die();
+       $this->getBlogList();
     }
-    public function list() 
+    public function getBlogList()
     {
-        //$blog = new Blog();
         $result = $this->blogRepo->getData(0);
         include 'view/list.php';
     }
@@ -38,9 +39,7 @@ class BlogController
     {
         $blog = new Blog(htmlspecialchars($_POST['name']) , htmlspecialchars($_POST['category']) , htmlspecialchars($_POST['id']));
         $res = $this->blogRepo->updateInfo($blog);
-        $this->list();
-        // echo $_POST['category'];
-        // echo $_POST['name'];
+        $this->getBlogList();
     }
     public function deleteData()
     {

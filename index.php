@@ -10,5 +10,3 @@
      //use Router\Router;
      $router = new Router\Router();
      $router->handle();
-
-?>

@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="~/../libs/bootstrap.css"> 
     <script src="~/../libs/jquery.min.js"></script>
     <script src="~/../libs/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+
     <style type="text/css">
         .wrapper{
             width: 650px;
@@ -24,7 +27,23 @@
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip();   
         });
+        $(document).ready(function () {
+            $('#dtBasicExample').DataTable();
+            $('.dataTables_length').addClass('bs-select');
+        });
     </script>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <ul class="pagination pagination-sm">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Home</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="../app/index.php?act=insertView">New Entry</a></li>
+                <li class="page-item"><a class="page-link" href="../app/index.php?act=loginView">Login</a></li>
+                <li class="page-item"><a class="page-link" href="#">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
 </head>
 <body>
     <div class="wrapper">
@@ -32,18 +51,19 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header clearfix">
-                        <h2 class="pull-left">Sports Details</h2>
-                        <a href="index.php" class="btn btn-success pull-right">Logout</a>
-                        <a href="view/insert.php" class="btn btn-success pull-right">Add New Sports</a>
+
+<!--                        <h2 class="pull-left">Details</h2>-->
+<!--                        <a href="index.php" class="btn btn-success pull-right">Logout</a>-->
+<!--                        <a href="view/insert.php" class="btn btn-success pull-right">Add New Sports</a>-->
                     </div>
                     <?php
                         if($result->num_rows > 0){
-                            echo "<table class='table table-bordered table-striped'>";
+                            echo "<table id='dtBasicExample' class='table table-bordered table-striped'>";
                                 echo "<thead>";
                                     echo "<tr>";
                                         echo "<th>#</th>";                                        
-                                        echo "<th>Sports Category</th>";
-                                        echo "<th>Sports Name</th>";
+                                        echo "<th>Category</th>";
+                                        echo "<th>Name</th>";
                                         echo "<th>Action</th>";
                                     echo "</tr>";
                                 echo "</thead>";
