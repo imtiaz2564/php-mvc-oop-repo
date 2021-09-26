@@ -26,4 +26,7 @@ class BlogRepository implements  IBlog {
     public function deleteData($id) {
         return $this->dbSvc->deleteData($id);
     }
+    public function getViewData($id) {
+        return $this->dbSvc->getViewData($id);
+    }
 }

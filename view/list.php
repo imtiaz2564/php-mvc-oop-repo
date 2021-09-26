@@ -1,4 +1,4 @@
-<?php session_unset();?>
+<?php session_start();//session_unset();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,9 +38,11 @@
                 <li class="page-item disabled">
                     <a class="page-link" href="#" tabindex="-1">Home</a>
                 </li>
-                <li class="page-item"><a class="page-link" href="../app/index.php?act=insertView">New Entry</a></li>
+<!--                <li class="page-item"><a class="page-link" href="../app/index.php?act=insertView">New Entry</a></li>-->
                 <li class="page-item"><a class="page-link" href="../app/index.php?act=loginView">Login</a></li>
-                <li class="page-item"><a class="page-link" href="#">Logout</a></li>
+                <? if(isset($_SESSION["username"])) { ?>
+                <li class="page-item"><a class="page-link" href="../app/index.php?act=logout">Logout</a></li>
+                <? } ?>
             </ul>
         </div>
     </nav>
@@ -72,7 +74,10 @@
                                     echo "<tr>";
                                         echo "<td>" . $row['id'] . "</td>";                                        
                                         echo "<td>" . $row['category'] . "</td>";
-                                        echo "<td>" . $row['name'] . "</td>";
+//                                        echo "<td>" . $row['name'] . "</td>";
+                                        echo "<td><a href='index.php?act=viewdetail&id=". $row['id'] ."'>"
+                                         .$row['name'].
+                                    "</a></td>";
                                         echo "<td>";
                                         echo "<a href='index.php?act=update&id=". $row['id'] ."' title='Update Record' data-toggle='tooltip'><i class='fa fa-edit'></i></a>";
                                         echo "<a href='index.php?act=delete&id=". $row['id'] ."' title='Delete Record' data-toggle='tooltip'><i class='fa fa-trash'></i></a>";

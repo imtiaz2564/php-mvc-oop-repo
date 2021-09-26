@@ -23,19 +23,19 @@ class MysqlDBSvc implements IDB {
 //
 //        //$this->open_db();
 //    }
-public function __construct($objConst) {
+    public function __construct($objConst) {
 
-    $this->host = $objConst->host;
-    $this->user = $objConst->user;
-    $this->dbName = $objConst->db;
-    $this->dbPass = $objConst->pass;
-//echo $objConst->host;
-//echo $objConst->user;
-//echo $objConst->db;
-//echo $objConst->pass;
-//die();
- //   $this->open_db();
-}
+        $this->host = $objConst->host;
+        $this->user = $objConst->user;
+        $this->dbName = $objConst->db;
+        $this->dbPass = $objConst->pass;
+    //echo $objConst->host;
+    //echo $objConst->user;
+    //echo $objConst->db;
+    //echo $objConst->pass;
+    //die();
+     //   $this->open_db();
+    }
 //die();
     private function open_db() {
 
@@ -53,8 +53,9 @@ public function __construct($objConst) {
     }
     
     public function loginUser(User $user) {
-       $userName = $user->getUsername();
-       $password = $user->getPassword();
+
+        $userName = $user->getUsername();
+        $password = $user->getPassword();
       
         try{	
             $this->open_db();
@@ -73,7 +74,6 @@ public function __construct($objConst) {
             $this->close_db();	
             throw $e;
         }
-        
 
     }
 
@@ -108,7 +108,6 @@ public function __construct($objConst) {
             $this->open_db();
             if($id>0)
             {
-             	
                 $query=$this->conn->prepare("SELECT * FROM sports WHERE id=?");
                 $query->bind_param("i",$id);
             }
@@ -132,8 +131,6 @@ public function __construct($objConst) {
     }
 
     public function deleteData($id) {
-        // echo $id;
-        // die();
         try{
             $this->open_db();
             $query=$this->conn->prepare("DELETE FROM sports WHERE id=?");
@@ -172,11 +169,25 @@ public function __construct($objConst) {
         }
         
     }
+    public function getViewData($id) {
+//        echo $id;
+//        die();
+        $this->open_db();
+
+        $query=$this->conn->prepare("SELECT * FROM sports WHERE id=?");
+        $query->bind_param("i",$id);
+
+        $query->execute();
+        $res=$query->get_result();
+        $query->close();
+        $this->close_db();
+        return $res;
+//        print_r($res);
+//        die();
+    }
     public function SaveUser(User $user) {
 
         $query = "INSERT INTO user(name) VALUES(" . $user->getName() . ");";
-
-
         $this->conn->prepare();
 
     }

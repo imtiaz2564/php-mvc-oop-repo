@@ -59,6 +59,12 @@ class Router {
             case 'delete' :
                 $this->blogCtrl->deleteData();
                 break;
+            case 'viewdetail' :
+                $this->blogCtrl->viewData();
+                break;
+            case 'logout' :
+                $this->loginCtrl->logout();
+                break;
             default:
                //$this->loginCtrl->loginView();
                 $this->blogCtrl->getBlogList();

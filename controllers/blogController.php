@@ -1,6 +1,6 @@
 <?php
-namespace blog;
 
+namespace blog;
 use Model\Blog;
 use blogrepository\IBlog;
 require_once  'models/blog.php';
@@ -46,6 +46,11 @@ class BlogController
         $this->blogRepo->deleteData($_GET['id']);
         $result = $this->blogRepo->getData(0);
         include 'view/list.php';
-    }    
+    }
+    public function viewData()
+    {
+        $result = $this->blogRepo->getViewData($_GET['id']);
+        include "view/viewDetail.php";
+    }
 
 }

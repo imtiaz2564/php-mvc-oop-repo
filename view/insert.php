@@ -25,12 +25,17 @@
                     <form action="../app/index.php?act=insert" method="post" >
                         <div class="form-group">
                             <label>Category</label>
-                            <input type="text" name="category" class="form-control" value="">
+                            <input type="text" name="category" class="form-control" value="" required>
                              <span class="help-block"></span>
                         </div>
                         <div class="form-group">
                             <label>Name</label>
-                            <input name="name" class="form-control" value="">
+                            <input name="name" class="form-control" value="" required>
+                            <span class="help-block"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Image</label>
+                            <input type="file" name="image" class="form-control" value="" required>
                             <span class="help-block"></span>
                         </div>
                         <input type="submit" name="addbtn" class="btn btn-primary" value="Submit">

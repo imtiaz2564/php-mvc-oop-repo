@@ -33,9 +33,14 @@ class LoginController
             include "view/insert.php";
         }
         else{
-            $error = 'error';
             include "view/login.php"; 
         }
+    }
+
+    public function logout()
+    {
+        unset($_SESSION["username"]);
+        $this->loginView();
     }
 
 }
